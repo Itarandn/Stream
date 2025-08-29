@@ -1,0 +1,610 @@
+#cssBranding{
+    z-index: 9999;
+    transition: transform 200ms ease;
+    position: absolute;
+    top: 64px;
+    left: 24px;
+    transform: translate(-95%,0px);
+    background: rgba(0,0,0,0.8);
+    display: none;
+    -webkit-user-modify: read-write-plaintext-only;
+    max-height: 300px;
+    overflow: auto;
+}
+#cssBranding:hover, #cssBranding:focus{
+    transform: translate( 0%,0px);
+}
+
+* {
+font-family: Sarabun, Poppins, sans-serif;
+}
+
+/*  */
+body::before {
+    pointer-events: none;
+/*content: "";*/
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 999999999;
+    padding: 8px 4px;
+   /* background: rgba(0,0,0,0.6);*/
+border-bottom: 1px solid rgba(251, 255, 0, 0.8);
+background: linear-gradient(to bottom, black, #fff00859);
+    backdrop-filter: blur(8px);
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    width: fill-available;
+    text-align: center;
+    text-shadow: 0 0 8px #000000;
+}
+
+body::before {
+    animation-delay: 30s;
+    animation-name: fadeout;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+} 
+
+/*  */
+:root {
+    /* Affects the login screen and the Preferences pahe */
+    --bkg: url("https://media.discordapp.net/attachments/822089060817436722/1045494737710350367/string.gif");
+    --bkg-color: #555555;    
+    --bkg-tv: url("https://forum.itgoit.nl/uploads/monthly_2022_11/large.b6370194003b75b7.jpeg.d64e8da6e0484be1381a3902296295f6.jpeg");
+    --bkg-tv-color: #555555;
+    --user-virtual-header-bkg: url("https://forum.itgoit.nl/uploads/monthly_2022_11/large.a2a0cd176e2ece40.jpeg.b71a84b01951f47d4af9a2d1ef78e049.jpeg");
+    --user-virtual-header-bkg-color: #555555;    
+    --dash-bkg: url("https://forum.itgoit.nl/uploads/monthly_2022_11/large.1499878133718.jpg.908a82d8fb3c3a50a146bcfa340a79d8.jpg");
+    --dash-bkg-color: #555555;
+    --dialog-blur: 12px;
+    --menu-logo: url("/jellyfin/web/assets/img/banner-light.png");
+    --menu-logo-height: 64px;
+}
+
+#loginPage .emby-button ,
+#forgotPasswordPage .emby-button {
+border-radius: 24px;
+}
+/* List items ( only on the preferences page ) */
+/* *:focus {
+    background-color: #a10000;
+    color: #ffffff;
+} */
+
+.layout-desktop #myPreferencesMenuPage .listItem {
+    transition: padding-left 500ms ease, box-shadow 300ms ease, background 500ms ease;
+    /* box-shadow: 0 0 0 0 rgba(0,0,0,0); */
+    box-shadow: 
+        inset 0 0 0 0px #7e7e7e,
+        inset 0 0 0 0px #252525,
+        0 0px 0px 0px #00000091
+    ;
+    border-radius: 0px;
+    padding-left: 24px;
+    margin: 0 -24px;
+}
+.layout-desktop #myPreferencesMenuPage .listItem:focus, .layout-desktop #myPreferencesMenuPage .listItem:hover {
+    padding-left: 32px;
+    box-shadow:  
+        inset 0 0 0 1px #7e7e7e,
+        inset 0 0 0 2px #252525,
+        0 4px 8px 1px #00000050
+    ;
+    background: #4b4b4b;
+    transition: padding-left 500ms ease, box-shadow 100ms ease, background 100ms ease;
+    
+    /* 
+    background: #3336;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 12px 0px rgb(107 107 107), inset 0 0 0 2px rgb(173 173 173 / 59%);
+    border-radius: 32px;
+    margin: 0 -24px; */
+}
+.emby-button.show-focus:focus {
+border-radius: 8px;
+}
+/* Login screen, Preferences, Dashboard */
+
+.layout-desktop #loginPage {
+    background: var(--bkg-color);
+    background-image: var(--bkg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+
+    display: flex;
+    justify-content: center;
+}
+.layout-tv #loginPage {
+    background: var(--bkg-tv-color);
+    background-image: var(--bkg-tv);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+}
+.dashboardDocument .content-primary{
+    min-height: 80vh;
+    background: var(--dash-bkg-color);
+
+    background-image: var(--dash-bkg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+}
+
+#dashboardPage .collapseContent, 
+#dashboardPage .formDialogFooter:not(#dashboardPage .formDialogFooter-clear), 
+#dashboardPage .formDialogHeader:not(#dashboardPage .formDialogHeader-clear), 
+#dashboardPage .paperList, 
+#dashboardPage .visualCardBox {
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    overflow: auto;
+    border: 1px solid rgba(100,100,100, 0.3);
+}
+
+#dashboardPage .listItem:hover {
+background: rgba(0,21,64,0.8);
+}
+
+/* main drawer */
+
+.layout-desktop .libraryDocument .mainDrawer {
+    margin: 12px;
+    transition: opacity 500ms ease, transform 300ms linear;
+    opacity: 0;
+    padding: 0px;
+    background: #0008;
+    border: solid 1px #000;
+    box-shadow: inset 0 0 0 1px #fff3;
+    backdrop-filter: blur(var(--dialog-blur));
+    border-radius: 8px;
+    padding-top: calc(var( --menu-logo-height ) + 32px);
+}
+.layout-desktop .libraryDocument .mainDrawer::before {
+    z-index: 24;
+    position: absolute;
+    content: "";
+    height: var( --menu-logo-height );
+    width: 100%;
+    top: 24px;
+    background-image: var( --menu-logo );
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.layout-desktop .libraryDocument .mainDrawer.drawer-open {
+    opacity: 1;
+}
+.layout-desktop .libraryDocument .mainDrawer .navMenuOption-selected {
+    background: linear-gradient(45deg, #AA5CC3 , #08A1DB) !important;
+}
+
+/* .tmla-mask */
+
+.layout-desktop .tmla-mask {
+    pointer-events: none;
+    visibility: visible;
+    display: block !important;
+    opacity: 0;
+    transition: all 0.3s ease !important;
+    background-image: var(--bkg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+    background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0.347));
+
+    backdrop-filter: blur(12px);
+
+    /* linear gradient mask */
+    /* -webkit-mask-image: linear-gradient(to right, #000000 100px, rgba(0, 0, 0, 0) 100%); */
+}
+.layout-desktop .tmla-mask.backdrop {
+    pointer-events: all;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Preferences */
+
+#myPreferencesMenuPage .sectionTitle,
+.mainDrawer .mainDrawer-scrollContainer {
+    z-index: 2;
+    position: relative;
+}
+#dashboardPage .content-primary {
+    position: relative;
+    z-index: 1;
+}
+#displayPreferencesPage .settingsContainer {
+    position: relative;
+    z-index: 1;
+}
+.layout-desktop #myPreferencesMenuPage::before,
+.layout-desktop #searchPage::before,
+.layout-desktop #displayPreferencesPage::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bkg-color);
+
+    background-image: var(--bkg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+}
+.layout-tv #myPreferencesMenuPage::before,
+.layout-tv #searchPage::before,
+.layout-tv #displayPreferencesPage::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bkg-tv-color);
+
+    background-image: var(--bkg-tv);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+}
+#userProfilePage div {
+    z-index: 2;
+    position: relative;
+}
+#userProfilePage::before {
+    z-index: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    max-width: 1600px;
+    height: 500px;
+    transform: translateX(-50%);
+    background: var(--user-virtual-header-bkg-color);
+    background-image: var(--user-virtual-header-bkg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    mask: radial-gradient(50% 50% at top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    -webkit-mask: radial-gradient(50% 100% at top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+}
+
+/* -- */
+
+#searchPage div {
+    position: relative;
+    z-index: 2;
+}
+.skinHeader-withBackground {
+    background: linear-gradient(to bottom, black, transparent);
+    background-color: transparent !important;
+}
+
+/* Movie/Show info */
+.detailRibbon {
+    background: linear-gradient(to top, rgb(0 0 0 / 80%), transparent);
+    border-bottom: 1px solid rgb(46 46 46);
+}
+
+/* DESKTOP */
+.layout-desktop .detailRibbon::after {
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff32;
+    /* background: linear-gradient(to right, transparent, white, transparent); */
+    height: 1px;
+}
+.layout-desktop .listItem-withContentWrapper {
+    transition: backdrop-filter 500ms ease, box-shadow 300ms ease, background 500ms ease;
+}
+.layout-desktop .listItem-withContentWrapper:hover {
+    background: none;
+}
+.layout-desktop .listItem-withContentWrapper .listItem-content {
+    overflow: hidden;
+    backdrop-filter: blur(0px);
+    box-shadow: 0 0 0 1px #000000, 0 0 0 2px #474747, 0 0 0px 0px rgb(255 255 255 / 20%),
+        inset 0 0px 0px 0px rgb(0 0 0 / 60%);
+    border-radius: 12px;
+    transition: backdrop-filter 500ms ease, box-shadow 300ms ease;
+}
+.layout-desktop .listItem-withContentWrapper .listItem-content::before {
+    content: "";
+    background: linear-gradient(to bottom, #0000004d, #022035b8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    transition: opacity 500ms ease;
+}
+
+.layout-desktop .listItem-withContentWrapper:hover .listItem-content,
+.layout-desktop .listItem-withContentWrapper:focus .listItem-content {
+    box-shadow: 0 0 0 1px #000000, 0 0 0 2px #474747, 0 0 5px 1px rgb(255 255 255 / 20%),
+        inset 0 12px 24px 1px rgb(0 0 0 / 60%);
+}
+.layout-desktop .listItem-withContentWrapper:hover .listItem-content::before {
+    opacity: 1;
+}
+.layout-desktop .listItem-withContentWrapper .listItem-content .listItemImage {
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+    margin: 12px;
+}
+/* TV */
+.layout-tv .itemsContainer-tv .listItem {
+    transition: transform 300ms ease, backdrop-filter 500ms ease, box-shadow 300ms ease, background 500ms ease;
+    box-shadow: 0 0 0 0px #000000, 0 0 0 0px #474747, 0 0 0px 0px rgb(255 255 255 / 20%),
+        inset 0 0px 0px 0px rgb(0 0 0 / 60%);
+}
+.layout-tv .itemsContainer-tv .listItem:focus {
+    background: none;
+    box-shadow: 0 0 0 1px #000000, 0 0 0 2px #474747, 0 0 0px 0px rgb(255 255 255 / 20%),
+        inset 0 0px 0px 0px rgb(0 0 0 / 60%);
+}
+.layout-tv .itemsContainer-tv .listItem::before {
+    content: "";
+    background: radial-gradient(circle at 0% 49%, #022035b8 50%, #0000004d);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    transition: opacity 500ms ease;
+}
+.layout-tv .itemsContainer-tv .listItem:focus::before {
+    opacity: 1;
+}
+
+
+/* Inputs */
+.emby-button.button-submit {
+    background: linear-gradient(to bottom, #00bfff, #0986af);
+    /* border: 1px solid #02a8df; */
+    box-shadow: inset 0px 0px 0px 1px #0986af, inset 0 0 0 2px #000000;
+}
+.emby-button.button-submit:hover, .button-submit:focus {
+    background: linear-gradient(to bottom, #38cdff, #00ace5);
+    /* border: 1px solid #02a8df; */
+    box-shadow: inset 0px 0px 0px 1px #08b5ef, inset 0 0 0 2px #000000;
+}
+
+.emby-input, .emby-textarea {
+    min-height: 2.5em;
+    min-width: 7.5em;
+}
+.content-primary .checkboxList ,
+.emby-input,
+.emby-textarea {
+    box-shadow: inset 0 1px 3px 0px rgb(0 0 0 / 30%);
+    outline: none;
+    color: inherit;
+    background: linear-gradient(to bottom, #333333a1, #222222a1) !important;
+    border: 0.16em solid #292929;
+    -webkit-border-radius: 0.2em;
+    border-radius: 0.2em;
+    backdrop-filter: blur(12px);
+}
+.emby-input:focus,
+.emby-textarea:focus {
+    border-color: #00bfff !important;
+}
+
+.collapseContent, .formDialogFooter:not(.formDialogFooter-clear), .formDialogHeader:not(.formDialogHeader-clear), .paperList, .visualCardBox {
+    backdrop-filter: blur(12px);
+    padding: 6px !important;
+    box-shadow: 0 1px 0px 1px rgb(0 0 0 / 60%), 0 0 0 1px rgb(255 255 255 / 20%);
+    border-radius: 4px;
+    background: linear-gradient( to bottom ,#2525259c, #0b0b0ba8);
+}
+
+.emby-tab-button {
+    color: #999;
+    padding: 12px 24px;
+    margin: 12px;
+}
+
+.emby-tab-button-active {
+    backdrop-filter: blur(12px);
+    color: #fff;
+    box-shadow: inset 0 0 0 2px rgb(173 173 173 / 59%), 0 0 12px 0px rgb(107 107 107);
+    background-color: rgba(64,64,64,0.4);
+    text-shadow: 0 0 12px rgba(255,255,255,0.5);
+    /* margin: 12px; */
+    border-radius: 48px;
+}
+
+.toastContainer .toast  {
+    background-color: rgba(24,24,24,0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 32px;
+    padding: 16px 32px;
+}
+
+.layout-desktop .dialog {
+    padding: 8px;
+    background: #0008;
+    border: solid 1px #000;
+    box-shadow: inset 0 0 0 1px #fff3;
+    backdrop-filter: blur(var(--dialog-blur));
+    border-radius: 4px;
+}
+.layout-tv .dialog {
+    padding: 8px;
+    background: linear-gradient(to bottom, #0008, rgba(32, 32, 32, 0.533));
+    border: solid 1px #000;
+    box-shadow: inset 0 0 0 1px #fff3;
+    backdrop-filter: blur(var(--dialog-blur));
+}
+
+/* dialog - fotter */
+
+.layout-tv .dialog .collapseContent,
+.layout-tv .dialog .formDialogFooter:not(.formDialogFooter-clear),
+.layout-tv .dialog .formDialogHeader:not(.formDialogHeader-clear),
+.layout-tv .dialog .paperList,
+.layout-tv .dialog .visualCardBox {
+    backdrop-filter: blur(12px);
+    padding: 6px !important;
+    box-shadow: 0 1px 0px 1px rgb(48, 48, 48), 0 0 0 1px rgb(52, 52, 52);
+    border-radius: 4px;
+    background: linear-gradient( to bottom ,#2525259c, #0b0b0ba8);
+}
+
+
+/* video player */
+
+.sliderBubble {
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 12px 1px rgb(0 0 0 / 60%), 0 0 0 1px rgb(255 255 255 / 20%);
+    border-radius: 4px;
+    background: linear-gradient( to bottom ,#2525259c, #4b4b4ba8);
+}
+
+/* music */
+
+.appfooter, .playlistSectionButton {
+    background: none;
+}
+    
+.appfooter .nowPlayingBar { 
+    /* modern colors for the background */
+    background: linear-gradient(to bottom, #000000, #022035b8) !important;
+    backdrop-filter: blur(18px);
+}
+.libraryDocument .nowPlayingInfoContainer {
+    margin-left: 0px;
+}
+.layout-desktop .libraryDocument .nowPlayingInfoControls {
+    background: linear-gradient(to right, #022035b8, transparent 80%) !important;
+    padding-left: 64px;
+}
+@media (orientation: portrait) and (max-width: 43em) {
+    .layout-desktop .libraryDocument .nowPlayingInfoControls {
+        background: linear-gradient(to bottom, #022035b8 10px, transparent 80%) !important;
+        border-top: 2px solid #033c65b8;
+        border-radius: 12px;
+        padding: 24px;
+    }
+}
+.libraryDocument .nowPlayingPageImageContainer {
+    margin-right: 0px;
+}
+/* .cardOverlayContainer:hover, .dialog, .toast, .raised.homeLibraryButton:hover {
+    box-shadow: 0px 0px 5px rgb(255, 0, 0) !important;
+    border: solid 1px rgba(var(--accent),0.6) !important;
+} */
+  
+/* ---- LIBRARY ---- */
+
+.card *  ,
+.libraryDocument .card  ,
+.libraryDocument .card * ,
+.libraryDocument .card .cardBox ,
+.libraryDocument .card .cardPadder,
+.libraryDocument .card .cardScalable  {
+    overflow: visible !important;
+}
+.libraryDocument .card .innerCardFooter {
+    overflow: hidden !important;
+    border-radius: 12px !important;
+    box-shadow: 
+        0 0 0 1px #000000, 
+        0 0 0 2px #474747,
+        0 0 5px 1px rgb(255 255 255 / 20%) !important;
+    ;
+    z-index: 569;
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    width: calc(100% - 20px);
+    height: 6px;
+    backdrop-filter: blur(2px);
+}
+.libraryDocument .card .innerCardFooter .itemProgressBar {
+    height: 100%;
+}
+.libraryDocument .cardOverlayContainer {
+    background: linear-gradient(to bottom, #ffffff00, #022035b8) !important;
+    backdrop-filter: blur(2px);
+    /* border: 1px solid #292929; */
+    box-shadow: inset 0 0 0 1px #000000, inset 0 0 0 2px #474747,
+        inset 0 0 5px 1px rgb(255 255 255 / 20%) !important;
+    ;
+}
+.libraryDocument .emby-checkbox:checked + span + .checkboxOutline,
+.libraryDocument .itemProgressBarForeground {
+    background: linear-gradient(to right, #0c3e85, #6a38f4) !important;
+}
+
+#loginPage .padded-left.padded-right.padded-bottom-page.margin-auto-y {
+    background: #0008;
+    border: solid 1px #000;
+    box-shadow: inset 0 0 0 1px #fff3;
+    backdrop-filter: blur(var(--dialog-blur));
+    border-radius: 4px;
+}
+
+.layout-desktop #loginPage {
+    background-image: url("/jellyfin/Branding/Splashscreen?format=jpg&foregroundLayer=1");
+}
+/* div#nowPlayingPage {
+    transition: opacity 0.5s ease-in-out;
+}
+.mouseIdle div#nowPlayingPage {
+    opacity: 0.5;
+}
+div#nowPlayingPage .nowPlayingButtonsContainer {
+    transition: opacity 0.5s ease-in-out;
+}
+.mouseIdle.libraryDocument .nowPlayingInfoControls {
+    background: none !important;
+}
+.mouseIdle div#nowPlayingPage .nowPlayingButtonsContainer {
+    opacity: 0;
+    animation: hideControls 5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes hideControls {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        margin-top: 0px;
+    }
+    100% {
+        margin-top: -100px;
+    }
+} */
